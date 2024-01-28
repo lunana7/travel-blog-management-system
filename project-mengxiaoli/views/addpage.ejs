@@ -1,0 +1,55 @@
+<%- include('layouts/header'); -%>
+<%
+var content = typeof content !== 'undefined' ? content : '';
+var title = typeof title !== 'undefined' ? title : '';
+var nav = typeof nav !== 'undefined' ? nav : '';
+var errors = typeof errors !== 'undefined' ? errors : [];
+%>
+
+<%- include('layouts/admin nav'); -%>
+<% if (errors) { %>
+  <div class="error">
+    <ul>
+      <% errors.forEach(function(error) { %>
+        <li><%= error.msg %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
+  <main>
+    <h1>Add Page</h1>
+    <form action="" method="POST" enctype="multipart/form-data">
+      <div class="wrapper">
+        <label for="pageNav">Page Navigation:</label>
+        <input type="text" id="pageNav" name="nav" value="<%= nav%>">
+      </div>
+      <div class="wrapper">
+        <label for="pageTitle">Page Title:</label>
+        <input type="text" id="pageTitle" name="title" value="<%= title%>">
+      </div>
+      <div class="wrapper">
+        <label for="pageContent">Page Content:</label>
+        <textarea id="pageContent" name="content"><%= content %></textarea>
+      </div>
+      <div class="wrapper">
+        <label for="image">Hero Image:</label>
+        <input type="file" id="image" name="image">
+      </div>
+      <div class="submission">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </main>
+
+  <script src="js/tinymce/jquery.tinymce.min.js"></script>
+  <script src="js/tinymce/tinymce.min.js"></script>
+  <script src="https://cdn.tiny.cloud/1/vxt26lrcig6ho4jlm3v7y10aim0zgqacf2hxf2qaqpygosrj/tinymce/5/tinymce.min.js"></script> 
+
+  <script>
+    tinymce.init({
+      selector: '#pageContent',
+      height: 500,
+      menubar: false
+    });
+  </script>
+<%- include('layouts/footer'); -%>

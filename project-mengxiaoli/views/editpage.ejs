@@ -1,0 +1,71 @@
+<%- include('layouts/header'); -%>
+<%
+var content = typeof content !== 'undefined' ? content : '';
+var title = typeof title !== 'undefined' ? title : '';
+var nav = typeof nav !== 'undefined' ? nav : '';
+  var errors = typeof errors !== 'undefined' ? errors : [];
+%>
+
+<%- include('layouts/admin nav'); -%>
+<% if (errors) { %>
+  <div class="error">
+    <ul>
+      <% errors.forEach(function(error) { %>
+        <li><%= error.msg %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
+  <main>
+    <h1>Edit Page</h1>
+    <form action="/editpage/<%= page._id %>" method="post" enctype="multipart/form-data">
+
+      <div class="wrapper">
+        <label for="pageNav">Page Navigation: </label>
+        <input type="text" id="pageNav" name="nav" value="<%= page.nav %>">
+      </div>
+      <div class="wrapper">
+        <label for="pageTitle">Page Title:</label>
+        <input type="text" id="pageTitle" name="title" value="<%= page.title %>">
+      </div>
+      <div class="wrapper">
+        <label for="pageContent">Page Content:</label>
+        <textarea id="pageContent" name="content"><%- page.content %></textarea>
+      </div>
+      <div class="wrapper">
+        <label for="image">Hero Image:</label>
+        <div class="old-image">        
+          <input type="file"  class="editimage" id="image" name="image">
+          <% if (page.imagePath) { %>
+            <img src="<%= page.imagePath %>" alt="Current image">
+          <% } %>
+        </div>
+
+      </div>
+      <div class="submission">
+        <input type="submit" value="Save">
+      </div>
+    </form>
+</main>
+
+  <script>
+  tinymce.init({
+    selector: '#content'
+  });
+  </script>
+
+
+<%- include('layouts/footer'); -%>
+
+<script src="js/tinymce/jquery.tinymce.min.js"></script>
+  <script src="js/tinymce/tinymce.min.js"></script>
+  <script src="https://cdn.tiny.cloud/1/vxt26lrcig6ho4jlm3v7y10aim0zgqacf2hxf2qaqpygosrj/tinymce/5/tinymce.min.js"></script> 
+
+ 
+  <script>
+    tinymce.init({
+      selector: '#pageContent',
+      height: 500,
+      menubar: false
+    });
+  </script>

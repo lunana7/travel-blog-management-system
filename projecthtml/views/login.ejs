@@ -1,0 +1,22 @@
+<%- include('layouts/header'); -%>
+<%- include('layouts/nav'); -%>
+        <main>
+
+              
+              <!-- Your login form and other content here -->
+              
+            <div class="form">
+                <h2>Login</h2>
+                <form action="/login" method="post" id="admin-form">
+                    <!-- 输入用户名和密码的表单 -->
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="Enter your username">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Enter your password">
+                    <input type="submit" value="Submit">
+                </form>
+                <!-- 添加一个链接到注册页面 -->
+                <p>Don't have an account? <a href="/register">Register here</a></p>
+            </div>
+        </main>
+        <%- include('layouts/footer'); -%>

@@ -1,0 +1,17 @@
+<%- include('layouts/header'); -%>
+
+<%- include('layouts/user nav'); -%>
+<main>
+  <div class="page-section">
+    <h2 class="section-title"><%= page.title %></h2>
+    <div class="hero-image">
+      <img src="<%= page.imagePath %>" alt="<%= page.title %>" class="image-responsive">
+    </div>
+    <p class="section-content"><%- page.content %></p>
+
+
+</div>
+</main>
+
+
+<%- include('layouts/footer'); -%>

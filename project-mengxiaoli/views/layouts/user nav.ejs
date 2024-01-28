@@ -1,0 +1,8 @@
+<nav class="nav">
+    <% navLinks.forEach(function(link) { %>
+      <a href="<%= link.url %>"><%= link.name %></a>
+
+    <% }); %>
+    <a href="/login">login</a>
+    <a href="/register">register</a>
+  </nav>
